@@ -1,3 +1,4 @@
 __pycache__
 aptos_dataset
 *.pth
+*.png

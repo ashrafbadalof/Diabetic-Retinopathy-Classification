@@ -39,6 +39,7 @@ class IDRiDDataset(Dataset):
     def __getitem__(self, index):
         img_path = self.dataframe.iloc[index]['full_path']
         label = self.dataframe.iloc[index]['Retinopathy grade']
+        label = torch.tensor([1 if label >= i else 0 for i in range(1, 5)], dtype=torch.float)
         image = Image.open(img_path).convert('RGB')
         if self.transform:
             image = self.transform(image)
